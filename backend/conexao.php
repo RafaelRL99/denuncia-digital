@@ -1,5 +1,5 @@
 <?php
-// Arquivo responsável por abrir a conexão com o banco MySQL no XAMPP.
+
 if (!headers_sent()) {
     header("Content-Type: application/json; charset=utf-8");
 }
@@ -31,6 +31,6 @@ if ($conexao->connect_error) {
     exit;
 }
 
-// Garante que caracteres acentuados sejam gravados e lidos corretamente.
+
 $conexao->set_charset("utf8mb4");
 ?>
