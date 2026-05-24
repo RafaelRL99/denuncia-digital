@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Denúncia Digital</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- Cabeçalho principal com navegação simples para as seções do sistema -->
+  <header class="topbar">
+    <a class="brand" href="#inicio" aria-label="Ir para o início">
+      <span class="brand-icon">!</span>
+      Denúncia Digital
+    </a>
+
+    <nav class="nav">
+      <a href="#inicio">Início</a>
+      <a href="#denuncia">Denunciar</a>
+      <a href="#dashboard">Dashboard</a>
+      <a href="#pesquisa">Pesquisa</a>
+      <a href="#direitos-digitais">Direitos Digitais</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Página inicial moderna com chamada para ação -->
+    <section id="inicio" class="hero">
+      <div class="hero-content">
+        <p class="eyebrow">Direitos humanos no ambiente digital</p>
+        <h1>Denúncia anônima, segura e organizada.</h1>
+        <p>
+          Registre situações de violência, discriminação, ameaças, exposição indevida
+          ou outros abusos digitais sem informar sua identidade.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#denuncia">Fazer denúncia</a>
+          <a class="button secondary" href="#dashboard">Ver indicadores</a>
+          <a class="button outline" href="https://docs.google.com/forms/d/1oqYEptO-aZlIrcuzNsU2qe_s_5K8-7WSq-Xq37G22JE/edit" target="_blank" rel="noopener noreferrer">Responder Pesquisa</a>
+        </div>
+      </div>
+
+      <div class="hero-panel" aria-label="Resumo do sistema">
+        <div>
+          <strong>100%</strong>
+          <span>anônimo</span>
+        </div>
+        <div>
+          <strong>LGPD</strong>
+          <span>privacidade por princípio</span>
+        </div>
+        <div>
+          <strong>MySQL</strong>
+          <span>dados estruturados</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formulário de denúncia anônima integrado ao backend em PHP -->
+    <section id="denuncia" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">Formulário anônimo</p>
+        <h2>Registrar denúncia</h2>
+        <p>Preencha apenas as informações necessárias para compreender o ocorrido.</p>
+      </div>
+
+      <form id="formDenuncia" class="form-card">
+        <div class="form-grid">
+          <label>
+            Tipo de violação
+            <select name="tipo" required>
+              <option value="">Selecione</option>
+              <option value="Discriminação">Discriminação</option>
+              <option value="Ameaça">Ameaça</option>
+              <option value="Exposição indevida">Exposição indevida</option>
+              <option value="Discurso de ódio">Discurso de ódio</option>
+              <option value="Assédio digital">Assédio digital</option>
+              <option value="Outro">Outro</option>
+            </select>
+          </label>
+
+          <label>
+            Plataforma
+            <select name="plataforma" required>
+              <option value="">Selecione</option>
+              <option value="Rede social">Rede social</option>
+              <option value="Aplicativo de mensagem">Aplicativo de mensagem</option>
+              <option value="Site">Site</option>
+              <option value="Jogo online">Jogo online</option>
+              <option value="E-mail">E-mail</option>
+              <option value="Outro">Outro</option>
+            </select>
+          </label>
+        </div>
+
+        <label>
+          Descrição da denúncia
+          <textarea name="descricao" rows="6" maxlength="1500" required placeholder="Descreva o que aconteceu, quando ocorreu e onde a violação foi vista."></textarea>
+        </label>
+
+        <label>
+          Link ou referência opcional
+          <input type="url" name="link_referencia" placeholder="https://exemplo.com/publicacao">
+        </label>
+
+        <label class="checkbox-line">
+          <input type="checkbox" name="consentimento" value="1" required>
+          <span>Confirmo que li as orientações de privacidade e entendo que não devo inserir dados pessoais desnecessários.</span>
+        </label>
+
+        <button class="button primary submit-button" type="submit">Enviar denúncia</button>
+        <p id="mensagemFormulario" class="form-message" role="status"></p>
+      </form>
+    </section>
+
+    <!-- Dashboard com gráficos criados pelo Chart.js a partir dos dados do MySQL -->
+    <section id="dashboard" class="section muted">
+      <div class="section-heading">
+        <p class="eyebrow">Indicadores</p>
+        <h2>Dashboard de denúncias</h2>
+        <p>Acompanhe os registros por tipo de violação e plataforma.</p>
+      </div>
+
+      <div class="dashboard-grid">
+        <article class="metric-card">
+          <span>Total de denúncias</span>
+          <strong id="totalDenuncias">0</strong>
+          <small id="mensagemDashboard"></small>
+        </article>
+        <article class="chart-card">
+          <h3>Por tipo de violação</h3>
+          <canvas id="graficoTipos" height="220"></canvas>
+        </article>
+        <article class="chart-card">
+          <h3>Por plataforma</h3>
+          <canvas id="graficoPlataformas" height="220"></canvas>
+        </article>
+      </div>
+    </section>
+
+    <!-- Seção da pesquisa externa usada na apresentação acadêmica -->
+    <section id="pesquisa" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">Participação</p>
+        <h2>Pesquisa acadêmica</h2>
+        <p>Ajude a compreender a percepção das pessoas sobre violações de direitos no ambiente digital.</p>
+      </div>
+
+      <div class="research-box">
+        <p>
+          A pesquisa é respondida em um formulário do Google Forms e será aberta em uma nova aba.
+        </p>
+        <a class="button primary" href="https://docs.google.com/forms/d/1oqYEptO-aZlIrcuzNsU2qe_s_5K8-7WSq-Xq37G22JE/edit" target="_blank" rel="noopener noreferrer">Responder Pesquisa</a>
+      </div>
+    </section>
+
+    <!-- Conteúdo educativo sobre direitos digitais, denúncia e segurança -->
+    <section id="direitos-digitais" class="section muted">
+      <div class="section-heading">
+        <p class="eyebrow">Informação e prevenção</p>
+        <h2>Direitos Digitais</h2>
+        <p>Conceitos simples para reconhecer violações e buscar ajuda com segurança.</p>
+      </div>
+
+      <div class="info-grid">
+        <article>
+          <h3>O que são direitos digitais?</h3>
+          <p>
+            São direitos relacionados ao uso da internet, como privacidade, liberdade
+            de expressão, proteção de dados, acesso à informação e segurança online.
+          </p>
+        </article>
+        <article>
+          <h3>O que é cyberbullying?</h3>
+          <p>
+            É a prática de humilhar, ameaçar, perseguir ou constranger alguém por
+            meios digitais, como redes sociais, mensagens, jogos online ou e-mails.
+          </p>
+        </article>
+        <article>
+          <h3>O que é LGPD?</h3>
+          <p>
+            A Lei Geral de Proteção de Dados orienta como dados pessoais devem ser
+            coletados, usados e protegidos no Brasil.
+          </p>
+        </article>
+        <article>
+          <h3>Como denunciar violações digitais?</h3>
+          <p>
+            Guarde provas, como links, datas, prints e perfis envolvidos. Depois,
+            registre a denúncia em canais oficiais, na plataforma onde ocorreu o fato
+            e, quando necessário, em órgãos públicos.
+          </p>
+        </article>
+        <article>
+          <h3>Onde buscar apoio?</h3>
+          <p>
+            Procure a Defensoria Pública, delegacias especializadas, Ministério
+            Público, serviços de assistência social, psicólogos, universidades ou
+            organizações de proteção aos direitos humanos.
+          </p>
+        </article>
+        <article>
+          <h3>Dicas de segurança digital</h3>
+          <p>
+            Use senhas fortes, ative a verificação em duas etapas, evite compartilhar
+            dados sensíveis, revise permissões de aplicativos e desconfie de links
+            recebidos por mensagens.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Denúncia Digital - projeto acadêmico preparado para XAMPP.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
